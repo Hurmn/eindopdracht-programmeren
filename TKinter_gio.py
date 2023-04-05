@@ -1,6 +1,4 @@
 import tkinter as tk
-from random import randrange
-
 
 window = tk.Tk()
 window.title("Welkom bij ontspanningstool")
@@ -21,8 +19,9 @@ label1.pack()
 lengte = tk.Entry(master=window, width=10, font=("Helvetica", 12))
 lengte.pack(pady=10)
 
-btn_submit = tk.Button(master=window, text="bereken", font=("Helvetica", 12), bg="green", fg="white")
-btn_submit.pack(pady=10)
+andwoord = tk.Label(window, text="", font=("Helvetica", 12))
+andwoord.pack(pady=10)
+
 
 clear = tk.Button(master= window, text='clear')
 clear.pack(pady=10)
@@ -34,11 +33,16 @@ def clear_handle(event):
 
 def sub_handle(event):
     print('knop gedrukt')
-    lengte = float(lengte.get())
-    kilo = float(kilo.get())
-    print(kilo)
+    lengte2 = float(lengte.get())
+    kilo2 = float(kilo.get())
+    bmi = kilo2/ (lengte2 ** 2)
+    andwoord.config(text="Je BMI is {:.1f}".format(bmi))
+
+btn_submit = tk.Button(master=window, text="bereken", font=("Helvetica", 12), bg="green", fg="white", command=sub_handle)
+btn_submit.pack(pady=10)
 
 clear.bind('<Button-1>', clear_handle)
 btn_submit.bind('<Button-1>', sub_handle)
+
 window.configure(bg="white")  # achtergrondkleur van het venster
 window.mainloop()
