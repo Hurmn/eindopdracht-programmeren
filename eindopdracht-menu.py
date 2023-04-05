@@ -43,40 +43,47 @@ frame_thing_2 = tk.Frame(borderwidth=10)
 label_2 = tk.Label(frame_thing_2, text="teylaa's game", bg = "red", fg="white", width=20, height=8)
 label_2.pack()
 
+#Harmens gedeelte
 frame_harmen = tk.Frame(borderwidth=10)
 
+#Grid maken
 window.columnconfigure(index=0, weight=1)
 window.columnconfigure(index=1, weight=1)
-window.columnconfigure(index=2, weight=1)
 
+#afstand bepalen
 afstandlabel = tk.Label(frame_harmen, text="Hoeveel kilometer?")
 afstandlabel.grid(column=0, row=1)
-
 invoerAfstand = tk.Entry(frame_harmen, width=10)
 invoerAfstand.grid(column=1, row=1)
 
+#snelheid bepalen
 snelheidLabel = tk.Label(frame_harmen, text="Wat is je snelheid(Km/u)")
 snelheidLabel.grid(column=0, row=2)
-
 invoerSnelheid = tk.Entry(frame_harmen, width=10)
 invoerSnelheid.grid(column=1, row=2)
 
+#submit en clear knoppen
 submit = tk.Button(frame_harmen, text="submit")
 submit.grid(column=0, row=3)
-
 clear = tk.Button(frame_harmen, text="clear")
 clear.grid(column=1, row=3)
 
+#output
 out = tk.Label(frame_harmen, text="Hoelang duurt je reis", width="40")
 out.grid(column=0, row=4)
 
 def handle_submit(event):
+    #bepaal de tijd
     nu = datetime.now()
+    #afstand en tijd in variabele gezet
     afstand = int(invoerAfstand.get())
     snelheid = int(invoerSnelheid.get())
+    #reistijd bepalen
     minuten = afstand / snelheid * 60
+    #tijdsverschil bepalen om aankomstijd uit te kunnen rekenen
     tijdVerschil = timedelta(minutes= minuten)
     aankomstTijd = nu + tijdVerschil
+    #output neerzetten
     out["text"] ="de reis duurt " + str(minuten) + "minuten en je komt aan om " + aankomstTijd.strftime("%H:%M")
 
 def handle_clear(event):
