@@ -6,42 +6,60 @@ window = tk.Tk()
 
 
 def show_thing_1():
-    frame_thing_2.pack_forget()
+    window.title("risi's gedeelte")
+    frame_risi.pack()
+    frame_gio.pack_forget()
     frame_harmen.pack_forget()
-    frame_thing_1.pack()
+    frame_teylaa.pack_forget()
 
 def show_thing_2():
-    frame_thing_2.pack()
-    frame_thing_1.pack_forget()
+    window.title("Gio's gedeelte")
+    frame_gio.pack()
+    frame_risi.pack_forget()
+    frame_teylaa.pack_forget()
     frame_harmen.pack_forget()
 
 def show_thing_3():
     window.title("wanneer kom je aan")
     frame_harmen.pack()
-    frame_thing_1.pack_forget()
-    frame_thing_2.pack_forget()
+    frame_gio.pack_forget()
+    frame_risi.pack_forget()
+    frame_teylaa.pack_forget()
 
-window.title("Menu voorbeeld")
+def show_thing_4():
+    window.title("teylaa's gedeelte")
+    frame_teylaa.pack()
+    frame_harmen.pack_forget()
+    frame_gio.pack_forget()
+    frame_risi.pack_forget()
+
+window.title("De-RechteBanaan")
 
 menubar = tk.Menu(window)
 window.config(menu=menubar)
 
 
 mainmenu = tk.Menu(menubar)
-mainmenu.add_command(label="Risi's spelletje", command=show_thing_1)
-mainmenu.add_command(label="teylaa's spelletje", command=show_thing_2)
+mainmenu.add_command(label="Risi's gedeelte", command=show_thing_1)
+mainmenu.add_command(label="Gio's gedeelte", command=show_thing_2)
 mainmenu.add_command(label="Wanneer kom je aan", command=show_thing_3)
+mainmenu.add_command(label="Teylaa's gedeelte", command=show_thing_4)
 mainmenu.add_separator
 mainmenu.add_command(label="Exit", command=window.quit)
 menubar.add_cascade(label="Tool", menu=mainmenu)
 
-frame_thing_1 = tk.Frame(borderwidth=10)
-label_1 = tk.Label(frame_thing_1, text="Risi's game", bg = "blue", fg="white", width=20, height=8)
+frame_risi = tk.Frame(borderwidth=10)
+label_1 = tk.Label(frame_risi, text="Risi's gedeelte", bg = "blue", fg="white", width=20, height=8)
 label_1.pack()
 
-frame_thing_2 = tk.Frame(borderwidth=10)
-label_2 = tk.Label(frame_thing_2, text="teylaa's game", bg = "red", fg="white", width=20, height=8)
+frame_gio = tk.Frame(borderwidth=10)
+label_2 = tk.Label(frame_gio, text="gedeelte gio", bg = "red", fg="white", width=20, height=8)
 label_2.pack()
+
+frame_teylaa = tk.Frame(borderwidth=10)
+label_3 = tk.Label(frame_teylaa, text="Teylaa's gedeelte", bg = "green", fg="white", width=20, height=8)
+label_3.pack()
+
 
 #Harmens gedeelte
 frame_harmen = tk.Frame(borderwidth=10)
