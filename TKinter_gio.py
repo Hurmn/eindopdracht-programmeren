@@ -26,6 +26,10 @@ andwoord.pack(pady=10)
 clear = tk.Button(master= window, text='clear')
 clear.pack(pady=10)
 
+image = tk.PhotoImage(file="bmi.png")
+label3 = tk.Label(window, image=image)
+label3.pack()
+
 def clear_handle(event):
     print('verwijder de input')
     kilo.delete(0, 'end')
