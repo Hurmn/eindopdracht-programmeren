@@ -101,10 +101,10 @@ label_out.pack(pady=20)
 label = tk.Label(frame_gio, text="Voer hier je gewicht in kilo's in.", font=("Helvetica", 12))
 label.pack()
 
-kilo = tk.Entry(frame_gio, width=10, font=("Helvetica", 12))
+kilo = tk.Entry(master=frame_gio, width=10, font=("Helvetica", 12))
 kilo.pack(pady=10)
 
-label1 = tk.Label(frame_gio, text="voer hier je lengte in meters(bv. 1,70).", font=("Helvetica", 12))
+label1 = tk.Label(frame_gio, text="voer hier je lengte in meters(bv. 1.70).", font=("Helvetica", 12))
 label1.pack()
 
 lengte = tk.Entry(master=frame_gio, width=10, font=("Helvetica", 12))
@@ -113,13 +113,13 @@ lengte.pack(pady=10)
 andwoord = tk.Label(frame_gio, text="", font=("Helvetica", 12))
 andwoord.pack(pady=10)
 
+andwoord2 = tk.Label(frame_gio, text="", font=("Helvetica", 12))
+andwoord2.pack(pady=10)
+
 
 clear = tk.Button(master= frame_gio, text='clear')
 clear.pack(pady=10)
 
-#image = tk.PhotoImage(file="bmi.png")
-#label3 = tk.Label(frame_gio, image=image)
-#label3.pack()
 
 def clear_handle(event):
     print('verwijder de input')
@@ -132,14 +132,19 @@ def sub_handle(event):
     kilo2 = float(kilo.get())
     bmi = kilo2/ (lengte2 ** 2)
     andwoord.config(text="Je BMI is {:.1f}".format(bmi))
+    if bmi <= 18.5:
+        andwoord2["text"] ="je heb ondergewicht"
+    elif bmi > 25:
+        andwoord2["text"] ="je heb overgewicht"
+    else:
+        andwoord2["text"] ="je heb een normaal gewicht"
 
-btn_submit = tk.Button(master=frame_gio, text="bereken", font=("Helvetica", 12), bg="green", fg="white", command=sub_handle)
+
+btn_submit = tk.Button(master=frame_gio, text="bereken", font=("Helvetica", 12), bg="green", fg="white", command=sub_handle,  )
 btn_submit.pack(pady=10)
 
 clear.bind('<Button-1>', clear_handle)
 btn_submit.bind('<Button-1>', sub_handle)
-
-frame_gio.configure(bg="white")  # achtergrondkleur van het venster
 
 frame_teylaa = tk.Frame(borderwidth=10)
 label_3 = tk.Label(frame_teylaa, text="Teylaa's gedeelte", bg = "green", fg="white", width=20, height=8)

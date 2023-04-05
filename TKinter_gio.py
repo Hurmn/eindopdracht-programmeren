@@ -22,13 +22,13 @@ lengte.pack(pady=10)
 andwoord = tk.Label(window, text="", font=("Helvetica", 12))
 andwoord.pack(pady=10)
 
+andwoord2 = tk.Label(window, text="", font=("Helvetica", 12))
+andwoord2.pack(pady=10)
+
 
 clear = tk.Button(master= window, text='clear')
 clear.pack(pady=10)
 
-image = tk.PhotoImage(file="bmi.png")
-label3 = tk.Label(window, image=image)
-label3.pack()
 
 def clear_handle(event):
     print('verwijder de input')
@@ -41,8 +41,15 @@ def sub_handle(event):
     kilo2 = float(kilo.get())
     bmi = kilo2/ (lengte2 ** 2)
     andwoord.config(text="Je BMI is {:.1f}".format(bmi))
+    if bmi <= 18.5:
+        andwoord2["text"] ="je heb ondergewicht"
+    elif bmi > 25:
+        andwoord2["text"] ="je heb overgewicht"
+    else:
+        andwoord2["text"] ="je heb een normaal gewicht"
 
-btn_submit = tk.Button(master=window, text="bereken", font=("Helvetica", 12), bg="green", fg="white", command=sub_handle)
+
+btn_submit = tk.Button(master=window, text="bereken", font=("Helvetica", 12), bg="green", fg="white", command=sub_handle,  )
 btn_submit.pack(pady=10)
 
 clear.bind('<Button-1>', clear_handle)
