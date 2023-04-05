@@ -49,8 +49,50 @@ mainmenu.add_command(label="Exit", command=window.quit)
 menubar.add_cascade(label="Tool", menu=mainmenu)
 
 frame_risi = tk.Frame(borderwidth=10)
-label_1 = tk.Label(frame_risi, text="Risi's gedeelte", bg = "blue", fg="white", width=20, height=8)
-label_1.pack()
+frame_risi.columnconfigure(index=0, weight=1)
+frame_risi.columnconfigure(index=1, weight=1)
+
+breedtelabel = tk.Label(frame_risi, text="Hoe breed is de vierkant?")
+breedtelabel.grid(column=0, row=1)
+
+invoerbreedte = tk.Entry(frame_risi, width=10)
+invoerbreedte.grid(column=1, row=1)
+
+lengtelabel = tk.Label(frame_risi, text="Hoe lengte is de vierkant?")
+lengtelabel.grid(column=0, row=2)
+
+invoerlengte = tk.Entry(frame_risi, width=10)
+invoerlengte.grid(column=1, row=2)
+
+submit = tk.Button(frame_risi, text="submit")
+submit.grid(column=0, row=3)
+
+clear = tk.Button(frame_risi, text="clear")
+clear.grid(column=1, row=3)
+
+out3 = tk.Label(frame_risi, text="Wat is de omtrek en oppervlakte van uw vierkant?", width="40")
+out3.grid(column=0, row=4)
+out2 = tk.Label(frame_risi, text="", width="40")
+out2.grid(column=0, row=5)
+
+def handle_submit(event):
+    breedte = int(invoerbreedte.get())
+    lengte = int(invoerlengte.get())
+    oppervlakte = breedte * lengte
+    omtrek = (breedte + lengte) * 2 
+    out3["text"] ="Uw vierkant heeft een oppervlakte van " + str(oppervlakte)
+    out2["text"] = "en een omtrek van " + str(omtrek)
+
+
+def handle_clear(event):
+    invoerbreedte.delete(0, "end")
+    invoerlengte.delete(0, "end")
+    out3["text"] ="Wat is de omtrek en oppervlakte van uw vierkant?"
+    out2["text"] =""
+
+clear.bind("<Button-1>", handle_clear)
+submit.bind("<Button-1>", handle_submit)
+
 
 frame_gio = tk.Frame(borderwidth=10)
 label_out = tk.Label(frame_gio, text="Bereken je BMI.", font=("Helvetica", 16))
@@ -75,9 +117,9 @@ andwoord.pack(pady=10)
 clear = tk.Button(master= frame_gio, text='clear')
 clear.pack(pady=10)
 
-image = tk.PhotoImage(file="bmi.png")
-label3 = tk.Label(frame_gio, image=image)
-label3.pack()
+#image = tk.PhotoImage(file="bmi.png")
+#label3 = tk.Label(frame_gio, image=image)
+#label3.pack()
 
 def clear_handle(event):
     print('verwijder de input')
