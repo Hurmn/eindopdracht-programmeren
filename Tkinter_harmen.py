@@ -14,7 +14,7 @@ afstandlabel.grid(column=0, row=1)
 invoerAfstand = tk.Entry(window, width=10)
 invoerAfstand.grid(column=1, row=1)
 
-snelheidLabel = tk.Label(window, text="Wat is je snelheid")
+snelheidLabel = tk.Label(window, text="Wat is je snelheid(Km/u)")
 snelheidLabel.grid(column=0, row=2)
 
 invoerSnelheid = tk.Entry(window, width=10)
@@ -31,8 +31,6 @@ out.grid(column=0, row=4)
 
 def handle_submit(event):
     nu = datetime.now()
-    dt_string = nu.strftime("%H:%M:%S")
-    print(dt_string)
     afstand = int(invoerAfstand.get())
     snelheid = int(invoerSnelheid.get())
     minuten = afstand / snelheid * 60
