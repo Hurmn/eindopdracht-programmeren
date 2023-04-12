@@ -147,8 +147,45 @@ clear.bind('<Button-1>', clear_handle)
 btn_submit.bind('<Button-1>', sub_handle)
 
 frame_teylaa = tk.Frame(borderwidth=10)
-label_3 = tk.Label(frame_teylaa, text="Teylaa's gedeelte", bg = "green", fg="white", width=20, height=8)
-label_3.pack()
+
+frame_teylaa.columnconfigure(index=0, weight=1)
+frame_teylaa.columnconfigure(index=1, weight=1)
+frame_teylaa.columnconfigure(index=2, weight=1)
+
+bedraglabel = tk.Label(frame_teylaa, text="Wat is uw bedrag?") 
+bedraglabel.grid(column=0, row=1)
+
+invoerbedrag = tk.Entry(frame_teylaa, width=10)
+invoerbedrag.grid(column=1, row=1)
+
+BTWLabel = tk.Label(frame_teylaa, text="wat is het BTW van uw bedrag (21/9)")
+BTWLabel.grid(column=0, row=2)
+
+invoerBTW = tk.Entry(frame_teylaa, width=10)
+invoerBTW.grid(column=1, row=2)
+
+submit = tk.Button(frame_teylaa, text="submit")
+submit.grid(column=0, row=3)
+
+clear = tk.Button(frame_teylaa, text="clear")
+clear.grid(column=1, row=3)
+
+out4 = tk.Label(frame_teylaa, text="Wat is uw bedrag na het BTW ", width="40")
+out4.grid(column=0, row=4)
+
+def handle_submit(event):
+    bedrag = int(invoerbedrag.get())
+    BTW = int(invoerBTW.get())
+    eindbedrag = bedrag / 100 * (100 + BTW)
+    out4["text"] ="uw eindbedrag is " , eindbedrag , 'euro' 
+
+def handle_clear(event):
+    invoerbedrag.delete(0, "end")
+    invoerBTW.delete(0, "end")
+    out4["text"] ="Wat us uw bedrag na het BTW?"
+
+clear.bind("<Button-1>", handle_clear)
+submit.bind("<Button-1>", handle_submit)
 
 
 #Harmens gedeelte
