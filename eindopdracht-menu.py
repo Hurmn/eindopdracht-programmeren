@@ -7,6 +7,7 @@ window = tk.Tk()
 
 def show_thing_1():
     window.title("risi's gedeelte")
+    frame_begin.pack_forget()
     frame_risi.pack()
     frame_gio.pack_forget()
     frame_harmen.pack_forget()
@@ -14,6 +15,7 @@ def show_thing_1():
 
 def show_thing_2():
     window.title("Gio's gedeelte")
+    frame_begin.pack_forget()
     frame_gio.pack()
     frame_risi.pack_forget()
     frame_teylaa.pack_forget()
@@ -21,6 +23,7 @@ def show_thing_2():
 
 def show_thing_3():
     window.title("wanneer kom je aan")
+    frame_begin.pack_forget()
     frame_harmen.pack()
     frame_gio.pack_forget()
     frame_risi.pack_forget()
@@ -28,6 +31,7 @@ def show_thing_3():
 
 def show_thing_4():
     window.title("teylaa's gedeelte")
+    frame_begin.pack_forget()
     frame_teylaa.pack()
     frame_harmen.pack_forget()
     frame_gio.pack_forget()
@@ -48,17 +52,27 @@ mainmenu.add_separator
 mainmenu.add_command(label="Exit", command=window.quit)
 menubar.add_cascade(label="Tool", menu=mainmenu)
 
+
+frame_begin = tk.Frame(borderwidth=10)
+welkom = tk.Label(frame_begin, text="Welkom bij onze rekentool!!")
+welkom.pack()
+
+welkom2 = tk.Label(frame_begin, text="Open het menu om de functies te gebruiken")
+welkom2.pack()
+
+frame_begin.pack()
+
 frame_risi = tk.Frame(borderwidth=10)
 frame_risi.columnconfigure(index=0, weight=1)
 frame_risi.columnconfigure(index=1, weight=1)
 
-breedtelabel = tk.Label(frame_risi, text="Hoe breed is de vierkant?")
+breedtelabel = tk.Label(frame_risi, text="Hoe breed is het vierkant?")
 breedtelabel.grid(column=0, row=1)
 
 invoerbreedte = tk.Entry(frame_risi, width=10)
 invoerbreedte.grid(column=1, row=1)
 
-lengtelabel = tk.Label(frame_risi, text="Hoe lengte is de vierkant?")
+lengtelabel = tk.Label(frame_risi, text="Hoe lang is het vierkant?")
 lengtelabel.grid(column=0, row=2)
 
 invoerlengte = tk.Entry(frame_risi, width=10)
