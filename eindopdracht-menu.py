@@ -107,14 +107,14 @@ def handle_clear(event):
 clear.bind("<Button-1>", handle_clear)
 submit.bind("<Button-1>", handle_submit)
 
-
+#er wordt een titel aangemaakt waarin staat bereken je bmi
 frame_gio = tk.Frame(borderwidth=10)
 label_out = tk.Label(frame_gio, text="Bereken je BMI.", font=("Helvetica", 16))
 label_out.pack(pady=20)
 
 label = tk.Label(frame_gio, text="Voer hier je gewicht in kilo's in.", font=("Helvetica", 12))
 label.pack()
-
+#maak een invoer veld voor de andwoorden van de gebruiker
 kilo = tk.Entry(master=frame_gio, width=10, font=("Helvetica", 12))
 kilo.pack(pady=10)
 
@@ -123,23 +123,24 @@ label1.pack()
 
 lengte = tk.Entry(master=frame_gio, width=10, font=("Helvetica", 12))
 lengte.pack(pady=10)
-
+#hier wordt andwoord de bmi weergegeven
 andwoord = tk.Label(frame_gio, text="", font=("Helvetica", 12))
 andwoord.pack(pady=10)
-
+#hier wordt weergegeven als je over gewicht of normaal gewicht heb of onder gewicht
 andwoord2 = tk.Label(frame_gio, text="", font=("Helvetica", 12))
 andwoord2.pack(pady=10)
 
-
+#button voor het verwijderen van het ingevoerde andwoorden
 clear = tk.Button(master= frame_gio, text='clear')
 clear.pack(pady=10)
 
-
+#functie can het verwijderen van het ingevoerde andwoorden
 def clear_handle(event):
     print('verwijder de input')
     kilo.delete(0, 'end')
     lengte.delete(0, 'end')
 
+#functie voor het berekenen van de bmi en een if statement waarin staat of je een hoge, lage of normale bmi heb
 def sub_handle(event):
     print('knop gedrukt')
     lengte2 = float(lengte.get())
@@ -153,10 +154,11 @@ def sub_handle(event):
     else:
         andwoord2["text"] ="je heb een normaal gewicht"
 
-
+#button voor het starten van de functie sub_handle door middel van event handeling
 btn_submit = tk.Button(master=frame_gio, text="bereken", font=("Helvetica", 12), bg="green", fg="white", command=sub_handle,  )
 btn_submit.pack(pady=10)
 
+#button voor het starten van de functie clear_handle door middel van event handeling
 clear.bind('<Button-1>', clear_handle)
 btn_submit.bind('<Button-1>', sub_handle)
 
