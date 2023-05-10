@@ -162,12 +162,15 @@ btn_submit.pack(pady=10)
 clear.bind('<Button-1>', clear_handle)
 btn_submit.bind('<Button-1>', sub_handle)
 
+# teylaa's frame
 frame_teylaa = tk.Frame(borderwidth=10)
 
+# hier krijgt de bedrag berekening een uiterlijk
 frame_teylaa.columnconfigure(index=0, weight=1)
 frame_teylaa.columnconfigure(index=1, weight=1)
 frame_teylaa.columnconfigure(index=2, weight=1)
 
+# de teksten en input komt erbij. met de input kan het de btw berekenen
 bedraglabel = tk.Label(frame_teylaa, text="Wat is uw bedrag?") 
 bedraglabel.grid(column=0, row=1)
 
@@ -189,6 +192,7 @@ clear.grid(column=1, row=3)
 out4 = tk.Label(frame_teylaa, text="Wat is uw bedrag na het BTW ", width="40")
 out4.grid(column=0, row=4)
 
+# dit is de code waar de user input word berekent met de gekozen btw.
 def handle_submit(event):
     bedrag = int(invoerbedrag.get())
     BTW = int(invoerBTW.get())
@@ -200,6 +204,8 @@ def handle_clear(event):
     invoerBTW.delete(0, "end")
     out4["text"] ="Wat us uw bedrag na het BTW?"
 
+
+# dit herstart de programma. 
 clear.bind("<Button-1>", handle_clear)
 submit.bind("<Button-1>", handle_submit)
 
