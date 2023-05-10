@@ -61,43 +61,60 @@ welkom2 = tk.Label(frame_begin, text="Open het menu om de functies te gebruiken"
 welkom2.pack()
 
 frame_begin.pack()
-
+#maakt een frame voor risi
 frame_risi = tk.Frame(borderwidth=10)
 frame_risi.columnconfigure(index=0, weight=1)
 frame_risi.columnconfigure(index=1, weight=1)
 
+#maakt een label aan met text erin 
 breedtelabel = tk.Label(frame_risi, text="Hoe breed is het vierkant?")
+#zorgt ervoor dat het op de goeie positie staat
 breedtelabel.grid(column=0, row=1)
 
+#maakt een invoer veld
 invoerbreedte = tk.Entry(frame_risi, width=10)
 invoerbreedte.grid(column=1, row=1)
 
+#maakt nog een label met text erin
 lengtelabel = tk.Label(frame_risi, text="Hoe lang is het vierkant?")
 lengtelabel.grid(column=0, row=2)
 
 invoerlengte = tk.Entry(frame_risi, width=10)
 invoerlengte.grid(column=1, row=2)
 
+#voegt een knop aan met erop "submit"
 submit = tk.Button(frame_risi, text="submit")
+
+#zorgt ervoor dat de knop op een goeie positie is 
 submit.grid(column=0, row=3)
 
+#voegt nog een knop toe met "clear" erop
 clear = tk.Button(frame_risi, text="clear")
 clear.grid(column=1, row=3)
 
+#zorgt ervoor dat er nog een text word toegevoegt op het einde
 out3 = tk.Label(frame_risi, text="Wat is de omtrek en oppervlakte van uw vierkant?", width="40")
 out3.grid(column=0, row=4)
 out2 = tk.Label(frame_risi, text="", width="40")
 out2.grid(column=0, row=5)
 
+#zorgt ervoor dat er een stuk code word uitgevoert wanneer je om de knop submit klikt
 def handle_submit(event):
+    #zorgt ervoor dat de ingevoerde waarde bij de invoerveld van breede een int wordt
     breedte = int(invoerbreedte.get())
+    #zorgt ervoor dat de ingevoerde waarde bij de invoerveld van lengte een int wordt
     lengte = int(invoerlengte.get())
+    #maakt een som om de oppervlakte te berekenen
     oppervlakte = breedte * lengte
+    #maakt een som om de omtrek te berekenen
     omtrek = (breedte + lengte) * 2 
+
+    #maakt een zin aan met erachter de oppervlakte 
     out3["text"] ="Uw vierkant heeft een oppervlakte van " + str(oppervlakte)
+    #maakt een zin aan met erachter de omtrek 
     out2["text"] = "en een omtrek van " + str(omtrek)
 
-
+#zorgt ervoor dat er een stuk code word uitgevoert wanneer je om de knop clear klikt
 def handle_clear(event):
     invoerbreedte.delete(0, "end")
     invoerlengte.delete(0, "end")
